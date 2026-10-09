@@ -1,0 +1,1 @@
+# LiveResx.Avalonia.TranslateFormatBug
