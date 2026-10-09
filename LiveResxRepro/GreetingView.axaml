@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:loc="clr-namespace:LiveResx.Avalonia"
+             xmlns:vm="clr-namespace:LiveResxRepro"
+             x:Class="LiveResxRepro.GreetingView"
+             x:DataType="vm:GreetingViewModel">
+  <StackPanel>
+    <!-- Bug: the generated ProvideValue binds "Text" against the DataContext -->
+    <TextBlock x:Name="ViaTranslateFormat">
+      <TextBlock.Text>
+        <loc:TranslateFormat Template="{x:Static loc:DynamicResources.Greeting}">
+          <Binding Path="Name"/>
+        </loc:TranslateFormat>
+      </TextBlock.Text>
+    </TextBlock>
+
+    <!-- Control: plain Translate binds "Text" with Source = the DynamicTranslation -->
+    <TextBlock x:Name="ViaTranslate"
+               Text="{loc:Translate {x:Static loc:DynamicResources.Greeting}}"/>
+  </StackPanel>
+</UserControl>

@@ -1,0 +1,17 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:loc="clr-namespace:LiveResx.Avalonia"
+             xmlns:vm="clr-namespace:LiveResxRepro"
+             x:Class="LiveResxRepro.PatchedGreetingView"
+             x:DataType="vm:GreetingViewModel">
+  <StackPanel>
+    <!-- Same as GreetingView, but using the patched copy of the extension -->
+    <TextBlock x:Name="ViaPatchedTranslateFormat">
+      <TextBlock.Text>
+        <vm:PatchedTranslateFormat Template="{x:Static loc:DynamicResources.Greeting}">
+          <Binding Path="Name"/>
+        </vm:PatchedTranslateFormat>
+      </TextBlock.Text>
+    </TextBlock>
+  </StackPanel>
+</UserControl>
